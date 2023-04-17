@@ -4,6 +4,7 @@ import MuiTypography from "../MuiTypography";
 import http from "../../utils/Api";
 import { Box, Container, Typography } from "@mui/material";
 import HeroBanner from "../hero/HeroBanner";
+import CommentForm from "./CommentForm";
 
 const ViewCkEditorData = () => {
   const getArticleData = () => {
@@ -33,6 +34,9 @@ const ViewCkEditorData = () => {
               variant="body1"
               dangerouslySetInnerHTML={{ __html: data?.content }}
             />
+            <Box sx={{ marginTop: "50px" }}>
+              <CommentForm />
+            </Box>
           </Container>
         </Box>
       </Suspense>

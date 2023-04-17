@@ -47,4 +47,14 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.Article = require("./article")(sequelize, Sequelize);
+db.Comment = require("./comment")(sequelize, Sequelize);
+
+// Relationship between Article And Comment Table
+db.Article.hasMany(db.Comment, { as: "comments" });
+db.Comment.belongsTo(db.Article, {
+  foreignKey: "ArticleId",
+  as: "articles",
+});
+
 module.exports = db;

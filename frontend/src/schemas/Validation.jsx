@@ -5,4 +5,9 @@ const articleSchema = yup.object().shape({
   content: yup.string().required("Content is required..."),
 });
 
+const commentSchema = yup.object().shape({
+  comment: yup.string().min(10).max(60).required("Comment is required..."),
+});
+
 export default articleSchema;
+export { commentSchema };

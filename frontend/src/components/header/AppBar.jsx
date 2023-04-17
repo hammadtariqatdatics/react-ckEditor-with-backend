@@ -88,6 +88,18 @@ const AppBar = () => {
           >
             View Data
           </Link>
+          <Link
+            to="/membership"
+            style={{
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: "18px",
+              textTransform: "uppercase",
+              marginLeft: "20px",
+            }}
+          >
+            Membership
+          </Link>
         </Box>
         <Box
           sx={{
