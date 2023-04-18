@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Form, Formik, Field } from "formik";
 import articleSchema from "../../schemas/Validation";
 import MuiButton from "../MuiButton";
@@ -10,6 +10,15 @@ import { ToastContainer, toast } from "react-toastify";
 import MyEditor from "./Editor";
 
 const CkEditorForm = () => {
+  const [isExist, setIsExist] = useState(false);
+
+  useEffect(() => {
+    const paymentId = JSON.parse(localStorage.getItem("paymentId"));
+    if (paymentId) {
+      setIsExist(true);
+    }
+  }, []);
+
   const postData = (payload) => http.post("/articles/publish", payload);
   const { isLoading, mutate } = useMutation(postData, {
     onSuccess: (successData) => {
@@ -62,15 +71,19 @@ const CkEditorForm = () => {
                 />
                 <Field name="content" component={MyEditor} />
                 <Box marginTop={6}>
-                  <MuiButton
-                    type="submit"
-                    color="secondary"
-                    variant="contained"
-                    size="large"
-                    disabled={isLoading}
-                  >
-                    Publish
-                  </MuiButton>
+                  {isExist ? (
+                    <MuiButton
+                      type="submit"
+                      color="secondary"
+                      variant="contained"
+                      size="large"
+                      disabled={isLoading}
+                    >
+                      Publish
+                    </MuiButton>
+                  ) : (
+                    toast("Purchase membership to publish Post!")
+                  )}
                   <ToastContainer />
                 </Box>
               </Form>

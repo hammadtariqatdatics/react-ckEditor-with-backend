@@ -1,5 +1,4 @@
 const express = require("express");
-require("dotenv").config();
 const router = express.Router();
 const db = require("../../../db/models");
 const { Article } = db;

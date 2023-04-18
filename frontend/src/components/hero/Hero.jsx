@@ -38,10 +38,10 @@ const Hero = () => {
         sx={{ minWidth: 200 }}
       >
         <Link
-          to="/create-user"
+          to="/open-editor"
           style={{ color: "#fff", textDecoration: "none" }}
         >
-          Create User
+          Create Post
         </Link>
       </MuiButton>
     </HeroLayout>
