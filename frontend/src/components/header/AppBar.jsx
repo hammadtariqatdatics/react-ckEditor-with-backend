@@ -131,7 +131,7 @@ const AppBar = () => {
             }}
           >
             <Link
-              to="/view-editor"
+              to="/open-editor"
               style={{
                 color: "#000",
                 textDecoration: "none",
@@ -139,7 +139,29 @@ const AppBar = () => {
                 textTransform: "uppercase",
               }}
             >
-              <MenuItem>View Editor</MenuItem>
+              <MenuItem>Open Editor</MenuItem>
+            </Link>
+            <Link
+              to="/view-editor-data"
+              style={{
+                color: "#000",
+                textDecoration: "none",
+                fontSize: "24px",
+                textTransform: "uppercase",
+              }}
+            >
+              <MenuItem>View Data</MenuItem>
+            </Link>
+            <Link
+              to="/membership"
+              style={{
+                color: "#000",
+                textDecoration: "none",
+                fontSize: "24px",
+                textTransform: "uppercase",
+              }}
+            >
+              <MenuItem>Membership</MenuItem>
             </Link>
           </Menu>
         </Box>

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../../db/models");
-const runPrompt = require("../../utils/helpers");
+const { commentPrompt } = require("../../utils/helpers");
 const { Comment } = db;
 
 // Retrieve a comment
@@ -68,7 +68,7 @@ router.post("/create/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { comment } = req.body;
-    const sentiment = await runPrompt(comment);
+    const sentiment = await commentPrompt(comment);
     // Save comment in the database
     const data = await Comment.create({
       comment: comment,

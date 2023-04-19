@@ -68,4 +68,19 @@ const fontFamilyArray = [
   "Oswald, Arial, sans-serif",
 ];
 
-export { routes, fontFamilyArray, toolbarArray, codeSnippet };
+function calculateReadingTime(content) {
+  const wordsPerMinute = 250;
+  const wordCount = content?.split(/\s+/g).length;
+  const readingTimeMinutes = wordCount / wordsPerMinute;
+  const readingTimeSeconds = readingTimeMinutes * 60;
+  const readingTime = Math.ceil(readingTimeSeconds);
+  return readingTime;
+}
+
+export {
+  routes,
+  fontFamilyArray,
+  toolbarArray,
+  codeSnippet,
+  calculateReadingTime,
+};

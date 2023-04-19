@@ -4,12 +4,29 @@ import MuiButton from "../MuiButton";
 import http from "../../utils/Api";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { ToastContainer, toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-//   const navigate = useNavigate();
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        backgroundColor: "#fff",
+        borderRadius: "4px",
+        padding: "12px",
+        border: "1px solid #ddd",
+        fontSize: "16px",
+        color: "#495057",
+      },
+      invalid: {
+        borderColor: "#dc3545",
+      },
+      "::placeholder": {
+        color: "#6c757d",
+      },
+    },
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +48,7 @@ const PaymentForm = () => {
           amount: 1099,
         });
         console.log(response);
-        toast("Membership purchased succesfully...");
+        toast("Membership purchased successfully...");
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +59,7 @@ const PaymentForm = () => {
     <Box sx={{ margin: "100px 0px" }}>
       <Container>
         <form onSubmit={handleSubmit}>
-          <CardElement />
+          <CardElement options={cardElementOptions} />
           <MuiButton
             type="submit"
             disabled={!stripe}

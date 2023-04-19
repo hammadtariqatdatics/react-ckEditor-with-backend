@@ -10,7 +10,7 @@ const Membership = () => {
   return (
     <>
       <HeroBanner
-        headingText="Membership Payment"
+        headingText="Membership"
         paraText="Here you can pay $10.99 to purchase membership"
       />
       <Elements stripe={stripePromise}>

@@ -7,7 +7,7 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-const runPrompt = async (comment) => {
+const commentPrompt = async (comment) => {
   const prompt = `sentiment analysis: This comment is "${comment}" either positive or negative?`;
   try {
     const response = await openai.createCompletion({
@@ -27,4 +27,25 @@ const runPrompt = async (comment) => {
   }
 };
 
-module.exports = runPrompt;
+const summerizePrompt = async (content) => {
+  const prompt = `Summerize the content "${content}" \n\nTl;dr`;
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0.7,
+      max_tokens: 250,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 1,
+    });
+    const text = response.data.choices[0].text.trim();
+    // console.log(response.data.choices[0]);
+    console.log(`Your summerize text is ${text}`);
+    return text;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { summerizePrompt, commentPrompt };

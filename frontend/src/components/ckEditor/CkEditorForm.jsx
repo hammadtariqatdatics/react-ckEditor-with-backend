@@ -44,7 +44,7 @@ const CkEditorForm = () => {
   return (
     <Box sx={{ margin: "100px 0px" }}>
       <Container>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Box>Loading...</Box>}>
           <Formik
             initialValues={initialValues}
             validationSchema={articleSchema}
@@ -71,7 +71,7 @@ const CkEditorForm = () => {
                 />
                 <Field name="content" component={MyEditor} />
                 <Box marginTop={6}>
-                  {isExist ? (
+                  {isExist && (
                     <MuiButton
                       type="submit"
                       color="secondary"
@@ -81,8 +81,6 @@ const CkEditorForm = () => {
                     >
                       Publish
                     </MuiButton>
-                  ) : (
-                    toast("Purchase membership to publish Post!")
                   )}
                   <ToastContainer />
                 </Box>
