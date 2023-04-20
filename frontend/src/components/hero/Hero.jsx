@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import heroBg from "../../assets/img/reading.jpg";
 import { Link } from "react-router-dom";
 import Theme from "../../theme/Theme";
+import Typed from "react-typed";
 
 const Hero = () => {
   return (
@@ -20,7 +21,7 @@ const Hero = () => {
       <Typography
         color="inherit"
         align="center"
-        variant="h2"
+        variant="h3"
         marked="center"
         sx={{
           fontFamily: Theme.typography.fontFamily,
@@ -28,7 +29,16 @@ const Hero = () => {
           marginBottom: "50px",
         }}
       >
-        Welcome to CKEditor Project
+        <Typed
+          strings={[
+            "Welcome to CKEditor Project!",
+            "Easy to Write Post!",
+            "Purchase Our Membership!",
+          ]}
+          typeSpeed={40}
+          backSpeed={50}
+          loop
+        />
       </Typography>
       <MuiButton
         color="secondary"
@@ -38,10 +48,10 @@ const Hero = () => {
         sx={{ minWidth: 200 }}
       >
         <Link
-          to="/create-user"
+          to="/open-editor"
           style={{ color: "#fff", textDecoration: "none" }}
         >
-          Create User
+          Create Post
         </Link>
       </MuiButton>
     </HeroLayout>

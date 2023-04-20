@@ -7,7 +7,7 @@ const CKEditor = () => {
     <>
       <HeroBanner
         headingText="CKEditor"
-        paraText="Here are the CKeditor tool for editing"
+        paraText="You have to purchase Membership to post Article"
       />
       <EditorForm />
     </>

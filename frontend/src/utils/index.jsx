@@ -1,6 +1,7 @@
 import HOME_PAGE from "../pages/Home";
 import OpenEditor from "../pages/CKEditor";
 import ViewCkEditorData from "../components/ckEditor/ViewCkEditorData";
+import Membership from "../pages/Membership";
 
 const routes = [
   {
@@ -18,18 +19,48 @@ const routes = [
     path: "view-editor-data",
     element: <ViewCkEditorData />,
   },
+  {
+    id: 3,
+    path: "membership",
+    element: <Membership />,
+  },
 ];
+
+const codeSnippet = {
+  languages: [
+    { language: "plaintext", label: "Plain text" },
+    { language: "javascript", label: "JavaScript" },
+    { language: "html", label: "HTML" },
+    { language: "css", label: "CSS" },
+  ],
+};
 
 const toolbarArray = [
   "heading",
   "|",
-  "fontfamily",
-  "|",
   "bold",
   "italic",
-  "underline",
-  "strikethrough",
+  "link",
+  "bulletedList",
+  "numberedList",
+  "blockQuote",
+  "ckfinder",
+  "|",
+  "imageTextAlternative",
+  "imageUpload",
+  "imageStyle:side",
+  "|",
+  "mediaEmbed",
+  "insertTable",
+  "tableColumn",
+  "tableRow",
+  "mergeTableCells",
+  "|",
+  "undo",
+  "redo",
+  "codeBlock",
 ];
+
 const fontFamilyArray = [
   "default",
   "Ubuntu, Arial, sans-serif",
@@ -37,4 +68,19 @@ const fontFamilyArray = [
   "Oswald, Arial, sans-serif",
 ];
 
-export { routes, fontFamilyArray, toolbarArray };
+function calculateReadingTime(content) {
+  const wordsPerMinute = 250;
+  const wordCount = content?.split(/\s+/g).length;
+  const readingTimeMinutes = wordCount / wordsPerMinute;
+  const readingTimeSeconds = readingTimeMinutes * 60;
+  const readingTime = Math.ceil(readingTimeSeconds);
+  return readingTime;
+}
+
+export {
+  routes,
+  fontFamilyArray,
+  toolbarArray,
+  codeSnippet,
+  calculateReadingTime,
+};
