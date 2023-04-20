@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const htmlToText = require("html-to-text");
 const db = require("../../../db/models");
 const { summerizePrompt } = require("../../utils/helpers");
 const { Article } = db;
