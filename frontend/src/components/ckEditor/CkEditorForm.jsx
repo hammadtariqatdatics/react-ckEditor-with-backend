@@ -13,8 +13,8 @@ const CkEditorForm = () => {
   const [isExist, setIsExist] = useState(false);
 
   useEffect(() => {
-    const paymentId = JSON.parse(localStorage.getItem("paymentId"));
-    if (paymentId) {
+    const emailId = JSON.parse(localStorage.getItem("emailId"));
+    if (emailId) {
       setIsExist(true);
     }
   }, []);
