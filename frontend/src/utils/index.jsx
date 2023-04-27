@@ -77,10 +77,16 @@ function calculateReadingTime(content) {
   return readingTime;
 }
 
+const linksStyle = {
+  color: "#ff3366",
+  textDecoration: "none",
+};
+
 export {
   routes,
   fontFamilyArray,
   toolbarArray,
   codeSnippet,
   calculateReadingTime,
+  linksStyle,
 };

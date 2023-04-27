@@ -34,7 +34,7 @@ const summerizePrompt = async (content) => {
       model: "text-davinci-003",
       prompt: prompt,
       temperature: 0.7,
-      max_tokens: 250,
+      max_tokens: 1000,
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 1,
@@ -48,4 +48,25 @@ const summerizePrompt = async (content) => {
   }
 };
 
-module.exports = { summerizePrompt, commentPrompt };
+const translatePrompt = async (content, translateVal) => {
+  const prompt = `Translate this "${content}" into "${translateVal}" while maintaining the same content length`;
+
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0.7,
+      max_tokens: 1000,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 1,
+    });
+    const text = response.data.choices[0].text.trim();
+    console.log(`Your translated text is ${text}`);
+    return text;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { summerizePrompt, commentPrompt, translatePrompt };

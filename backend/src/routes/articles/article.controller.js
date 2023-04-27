@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../../db/models");
-const { summerizePrompt } = require("../../utils/helpers");
+const { summerizePrompt, translatePrompt } = require("../../utils/helpers");
 const { Article } = db;
 
 // Retrieve an article
@@ -15,6 +15,39 @@ router.get("/:id", async (req, res) => {
     } else {
       res.status(400).send({
         message: `Cannot find Article with id=${id}.`,
+      });
+    }
+  } catch (error) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+});
+
+// update an article
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { translateVal } = req.body;
+  try {
+    const { content } = await Article.findByPk(id);
+    const translatedContent = await translatePrompt(content, translateVal);
+    console.log(translatedContent);
+    const translatedSummerizeContent = await summerizePrompt(translatedContent);
+    const updatedArticle = {
+      content: translatedContent,
+      contentSummery: translatedSummerizeContent,
+    };
+    const num = await Article.update(updatedArticle, {
+      where: { id: id },
+    });
+
+    if (num == 1) {
+      res.status(200).send({
+        message: "Article was updated successfully.",
+      });
+    } else {
+      res.status(400).send({
+        message: `Cannot update Article with id=${id}. Maybe Article was not found or req.body is empty!`,
       });
     }
   } catch (error) {
