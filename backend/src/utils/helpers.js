@@ -69,4 +69,24 @@ const translatePrompt = async (content, translateVal) => {
   }
 };
 
-module.exports = { summerizePrompt, commentPrompt, translatePrompt };
+const chatPrompt = async (prompt) => {
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      max_tokens: 2048,
+    });
+    const text = response.data.choices[0].text.trim();
+    console.log(`Your prompted response is ${text}`);
+    return text;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = {
+  summerizePrompt,
+  commentPrompt,
+  translatePrompt,
+  chatPrompt,
+};

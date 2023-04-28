@@ -50,6 +50,7 @@ db.Sequelize = Sequelize;
 db.Article = require("./article")(sequelize, Sequelize);
 db.Comment = require("./comment")(sequelize, Sequelize);
 db.Payment = require("./payment")(sequelize, Sequelize);
+db.Chat = require("./chat")(sequelize, Sequelize);
 
 // Relationship between Article And Comment Table
 db.Article.hasMany(db.Comment, { as: "comments" });

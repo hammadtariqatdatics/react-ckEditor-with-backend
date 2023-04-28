@@ -2,6 +2,7 @@ import HOME_PAGE from "../pages/Home";
 import OpenEditor from "../pages/CKEditor";
 import ViewCkEditorData from "../components/ckEditor/ViewCkEditorData";
 import Membership from "../pages/Membership";
+import Support from "../pages/Support";
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     id: 3,
     path: "membership",
     element: <Membership />,
+  },
+  {
+    id: 4,
+    path: "support",
+    element: <Support />,
   },
 ];
 

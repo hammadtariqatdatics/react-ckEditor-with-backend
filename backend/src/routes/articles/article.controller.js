@@ -31,7 +31,6 @@ router.put("/:id", async (req, res) => {
   try {
     const { content } = await Article.findByPk(id);
     const translatedContent = await translatePrompt(content, translateVal);
-    console.log(translatedContent);
     const translatedSummerizeContent = await summerizePrompt(translatedContent);
     const updatedArticle = {
       content: translatedContent,

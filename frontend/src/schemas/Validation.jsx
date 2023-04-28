@@ -18,5 +18,9 @@ const paymentSchema = yup.object().shape({
   cvc: yup.string().required("Required"),
 });
 
+const chatSchema = yup.object().shape({
+  prompt: yup.string().min(10).max(60).required("Question is required..."),
+});
+
 export default articleSchema;
-export { commentSchema, paymentSchema };
+export { commentSchema, paymentSchema, chatSchema };
