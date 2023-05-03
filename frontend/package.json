@@ -32,6 +32,7 @@
     "ckeditor5-custom-build": "file:ckeditor5",
     "cloudinary": "^1.35.0",
     "formik": "^2.2.9",
+    "html-react-parser": "^3.0.16",
     "my-app": "file:",
     "raw-loader": "^3.1.0",
     "react": "^18.2.0",

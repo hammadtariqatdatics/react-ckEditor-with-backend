@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 // import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -21,7 +21,7 @@ const MyEditor = ({ field, form }) => {
       editor={ClassicEditor}
       config={{
         cloudServices: cloudinaryConfiguration,
-        // plugins: [Essentials, CodeBlock, Heading, Paragraph],
+        // plugins: [CodeBlock],
         toolbar: toolbarArray,
         fontFamily: {
           options: fontFamilyArray,

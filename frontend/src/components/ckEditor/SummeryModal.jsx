@@ -37,7 +37,7 @@ const SummeryModal = ({ open, handleClose, contentSummery }) => {
             id="transition-modal-title"
             variant="h6"
             component="h2"
-            text=" Summerize Content"
+            text="Summerize Content"
           />
           <MuiTypography
             id="transition-modal-description"
